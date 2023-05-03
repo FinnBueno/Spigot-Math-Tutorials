@@ -13,7 +13,7 @@ layout: base
     {% assign order = order_string | split: ", " %}
     {% assign positions = order_string | split: ", " %}
 
-    {% assign posts = site.posts %}
+    {% assign posts = site.tutorials %}
     
     {%- if posts.size > 0 -%}
     {%- if page.list_title -%}

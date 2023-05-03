@@ -32,6 +32,10 @@ theme: minima
 plugins:
   - jekyll-feed
 
+collections:
+  tutorials:
+    output: true
+
 show_excerpts: true
 
 # Exclude from processing.

@@ -60,7 +60,7 @@ footer.site-footer {
   font-weight: 400 !important;
 }
 
-p > a, footer a {
+a {
   color: #10A0FF !important;
   // &:visited {
     // color: #8030CF !important;
@@ -78,9 +78,10 @@ p > a, footer a {
   border-radius: 6px;
   background-clip: border-box;
   overflow: hidden;
-  color: white;
+  color: white !important;
+  text-decoration: none;
   box-shadow: 0px 6px 10px 0px rgba(0,0,0,0.2);
-  transition: all .15s;
+  transition: all .25s;
 
   & > .preview-image {
     height: 140px;
@@ -94,7 +95,6 @@ p > a, footer a {
     margin: 0;
   }
 
-  text-decoration: none;
   &:hover {
     text-decoration: none;
     transform: translateY(-4px);
