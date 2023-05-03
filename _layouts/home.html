@@ -1,0 +1,53 @@
+---
+layout: base
+---
+
+<div class="home">
+    {%- if page.title -%}
+    <h1 class="page-heading">{{ page.title }}</h1>
+    {%- endif -%}
+    
+    {{ content }}
+
+    {% assign order_string = "Radians, Circles, Spheres, Vectors, Lines, Polygons, Projectiles, Rotation" %}
+    {% assign order = order_string | split: ", " %}
+    {% assign positions = order_string | split: ", " %}
+
+    {% assign posts = site.posts %}
+    
+    {%- if posts.size > 0 -%}
+    {%- if page.list_title -%}
+    <h2 class="post-list-heading">{{ page.list_title }}</h2>
+    {%- endif -%}
+    <ul class="post-list">
+        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+        {%- for post in posts -%}
+        {%- for orderitem in order -%}
+            {%- if orderitem == post.title -%}
+            {% assign index = forloop.index0 %}
+            {%- endif -%}
+        {%- endfor -%}
+        <a
+            class="post-item"
+            href="{{ post.url | relative_url }}"
+            style="
+                grid-column: calc({{ index | modulo: 3 }} + 1) / span 1;
+                grid-row: calc({{ index | divided_by: 3 | floor }} + 1) / span 1;
+            "
+        >
+            <div class="preview-image" style="background-image: url({{ post.image }})"></div>
+            <div class="post-content">
+                <h3>
+                    {{ post.title | escape }}
+                </h3>
+                {%- if site.show_excerpts -%}
+                {{ post.excerpt | strip_html | truncate: 95 }}
+                {%- endif -%}
+            </div>
+        </a>
+        {%- endfor -%}
+    </ul>
+    
+    {%- endif -%}
+    
+</div>
